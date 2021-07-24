@@ -105,10 +105,9 @@ def f6(n):
 ##############################################################
 #class level decorator
 ##############################################################
+from collections import OrderedDict
 class LRUCache:
-    from collections import OrderedDict
     def __init__(self,cachesize=3):
-
         self.cachesize = cachesize
         self.cache = OrderedDict()
         self.size = 0
@@ -133,3 +132,18 @@ def f7(n):
         return 1
     return f7(n-1) + f7(n-2)
 
+##############################################################
+#use lru_cache
+##############################################################
+
+from functools import lru_cache
+@lru_cache(maxsize=None)
+def f8(n):
+    if n == 0 or n == 1:
+        return 1
+    return f8(n-1) + f8(n-2)
+
+if __name__ == '__main__':
+    print(f6(30))
+    print(f7(30))
+    print(f8(30))

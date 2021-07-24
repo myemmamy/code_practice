@@ -35,6 +35,9 @@
 # 1 3 4 5 6 2
 # 1 2 3 4 5 6
 
+## time complexity:
+# sorting the entire arry of N numbers will therefore take 1+2+3+...(N-1) = N*(N-1)/2  , O(N2)
+
 def insertionSort2(n, arr):
     # Write your code here
     for i in range(1, n):
