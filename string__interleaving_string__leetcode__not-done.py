@@ -20,7 +20,9 @@
 # Example 3:
 # Input: s1 = "", s2 = "", s3 = ""
 # Output: true
+############################################################
 
+#part of method 2
 def cache(func):
     data={}
     def wrapper(*args):
