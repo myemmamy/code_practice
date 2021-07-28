@@ -21,9 +21,25 @@
 # Input: s1 = "", s2 = "", s3 = ""
 # Output: true
 
-class Solution: # time exceeded
+def cache(func):
+    data={}
+    def wrapper(*args):
+        if (args) in data:
+            return data[(args)]
+        else:
+            res=func(*args)
+            data[(args)] = res
+            return res
+    return wrapper
+
+class Solution:
+    #method 1: use lru_cache directly
+    # from functools import lru_cache
+    # @lru_cache(None)
+    
+    #method 2: use decorator
+    @cache
     def isInterleave(self, s1: str, s2: str, s3: str) -> bool:
-        dp={}
         if len(s1) == 0:
             return s2 == s3
         if len(s2) == 0:
@@ -31,3 +47,4 @@ class Solution: # time exceeded
         if len(s1) + len(s2) != len(s3):
             return False
         return (s1[0] == s3[0] and self.isInterleave(s1[1:],s2,s3[1:])) or (s2[0] == s3[0] and self.isInterleave(s1,s2[1:],s3[1:]))
+    
